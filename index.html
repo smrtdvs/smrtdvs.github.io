@@ -11,6 +11,18 @@
 
     <body class="recruiting-body">
 
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-105580439-1', 'auto');
+            ga('send', 'pageview');
+
+            var submitted = false;
+        </script>
+
         <main class="main">
             <div class="form-wrapper clearfix">
                 <form class="form" name="gform" id="gform" action="https://docs.google.com/forms/d/e/1FAIpQLSchY5IqtFZS3LfyWJH45lRo3hzow_-rJIDPRL3Hq6DGZqZsSA/formResponse?" target="hidden_iframe">
@@ -42,9 +54,6 @@
                     <div class="mb-gutter">
                         <div role="alert" id="js-alert-success" class="alert alert--success" tabindex="0">
                             <p class="alert__message"><strong>Sent!</strong> We will contact you soon!</p>
-                            <button class="icon-ic icon-icn__ip-close_juri alert__close" id="js-close-button-success">
-                                <span class="visuallyhidden">close</span>
-                            </button>
                         </div>
                     </div>
                     <button id="submit-button" aria-label="send" class="btn btn--primary" type="" title="">I'm interested</button>
@@ -53,26 +62,24 @@
         </main>
         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if (submitted) {}"></iframe>
 
+	</body>
+
     <script>
-var submitted = false,
-    alertSuccess = document.getElementById('js-alert-success'),
-    buttonSuccess = document.getElementById('submit-button'),
-    closeSuccessMessage = document.getElementById('js-close-button-success');
+        var alertSuccess = document.getElementById('js-alert-success'),
+            buttonSuccess = document.getElementById('submit-button'),
+            field = document.getElementById('entry.394405807');
 
-alertSuccess.setAttribute("style", "display: none; margin-top: -55px;");
-buttonSuccess.setAttribute("style", "margin-top: -15px;");
+        alertSuccess.setAttribute("style", "display: none; margin-top: -55px;");
+        buttonSuccess.setAttribute("style", "margin-top: -15px;");
 
-buttonSuccess.addEventListener('click', function() {
-    alertSuccess.setAttribute("style", "display: block;");
-    buttonSuccess.setAttribute("style", "margin-top: 0px;");
-    alertSuccess.focus();
-    submitted = true;
-});
-
-closeSuccessMessage.addEventListener('click', function() {
-    alertSuccess.setAttribute("style", "display: none;");
-});
+        buttonSuccess.addEventListener('click', function() {
+            if (field.value.trim() != '') {
+                alertSuccess.setAttribute("style", "display: block;");
+                buttonSuccess.setAttribute("style", "margin-top: 0px;");
+                alertSuccess.focus();
+                submitted = true;
+            }
+        });
     </script>
 
-	</body>
 </html>
